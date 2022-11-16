@@ -12,36 +12,30 @@
  */
 
 
-use app\controllers\AuthController;
-use app\core\Application;
-use app\controllers\AppController;
+use wizarphics\wizarframework\Application;
 
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
-$dotenv->load();
+$dotenv->safeLoad();
 
 
 $config = [
-    'userClass'=>\app\models\User::class,
-    'db'=>[
-        'dsn'=>$_ENV['DB_DSN'],
-        'user'=>$_ENV['DB_USER'],
-        'password'=>$_ENV['DB_PASSWORD']
+    'userClass' => \app\models\User::class,
+    'db' => [
+        'dsn' => $_ENV['DB_DSN'],
+        'user' => $_ENV['DB_USER'],
+        'password' => $_ENV['DB_PASSWORD']
     ]
 ];
 
 $app = new Application(dirname(__DIR__), $config);
 
-$router= $app->router;
 
-$router->get('/', [AppController::class, "home"]);
-$router->get('/contact', [AppController::class, "contact"]);
-$router->post('/contact',[ AppController::class, "handleForm"] );
-$router->get('/login',[ AuthController::class, "login"] );
-$router->post('/login',[ AuthController::class, "login"] );
-$router->get('/register',[ AuthController::class, "register"] );
-$router->post('/register',[ AuthController::class, "register"] );
-$router->get('/logout',[ AuthController::class, "logout"] );
+$router = $app->router;
+
+ob_start();
+require_once '../routes/web.php';
+ob_clean();
 
 $app->run();

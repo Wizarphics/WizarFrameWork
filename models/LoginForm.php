@@ -13,8 +13,8 @@
 
 namespace app\models;
 
-use app\core\Application;
-use app\core\Model;
+use wizarphics\wizarframework\Application;
+use wizarphics\wizarframework\Model;
 
 class LoginForm extends Model
 {

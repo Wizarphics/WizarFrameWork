@@ -13,28 +13,34 @@
 
 namespace app\controllers;
 
-use app\core\Application;
-use app\core\Controller;
-use app\core\Request;
-use app\core\Response;
+use wizarphics\wizarframework\Application;
+use wizarphics\wizarframework\Controller;
+use wizarphics\wizarframework\middlewares\AuthMiddleware;
+use wizarphics\wizarframework\Request;
+use wizarphics\wizarframework\Response;
 use app\models\LoginForm;
 use app\models\User;
+use Exception;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->registerMiddleware(new AuthMiddleware(['profile']));
+    }
     public function login(Request $request, Response $response)
     {
         $loginForm = new LoginForm();
-        if ($request->isPost()){
+        if ($request->isPost()) {
             $loginForm->loadData($request->getBody());
-            if ($loginForm->validate() && $loginForm->login()){
+            if ($loginForm->validate() && $loginForm->login()) {
                 $response->redirect('/');
                 return;
             }
         }
         $this->setLayout('auth');
         return $this->render('auth/login', [
-            'model'=>$loginForm
+            'model' => $loginForm
         ]);
     }
 
@@ -64,5 +70,24 @@ class AuthController extends Controller
     {
         Application::$app->logout();
         $response->redirect('/');
+    }
+
+    public function users( string|int $id = null, string $name = '', Request $request, Response $response)
+    {
+        $UserModel = new User();
+        $user = $UserModel->findOne(['id'=>$id]);
+        if($user){
+            print '<pre>';
+            print_r($user);
+            print '</pre>';
+            exit;
+        }else{
+            throw new Exception("Error Processing Request");
+        }
+    }
+
+    public function profile()
+    {
+        return $this->render('profile');
     }
 }

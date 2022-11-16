@@ -1,5 +1,5 @@
 <?php
-use app\models\User;
+use app\models\ContactModel;
 /*
  * Copyright (c) 2022.
  * User: Fesdam
@@ -11,17 +11,25 @@ use app\models\User;
  * @author Wizarphics <Wizarphics@gmail.com>
  *
  */
-/** @var $model User  */
+/** @var $model ContactModel */
+
+use wizarphics\wizarframework\View;
+
+/**
+ * @var View $this
+ */
+$this->title = 'Login';
+
 ?>
 <div class="container py-5">
     <h1>Login</h1>
-    <?php $form = app\core\form\Form::begin('', 'post') ?>
+    <?php $form = wizarphics\wizarframework\form\Form::begin('', 'post') ?>
     <?= $form->field($model, 'email')->emailField() ?>
     <?= $form->field($model, 'password')->passwordField() ?>
     <div class="col-12 mt-3">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <?= \app\core\form\Form::end() ?>
+    <?= \wizarphics\wizarframework\form\Form::end() ?>
 </div>
 
 

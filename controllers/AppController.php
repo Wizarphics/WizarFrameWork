@@ -13,9 +13,11 @@
 
 namespace app\controllers;
 
-use app\core\Application;
-use app\core\Controller;
-use app\core\Request;
+use wizarphics\wizarframework\Application;
+use wizarphics\wizarframework\Controller;
+use wizarphics\wizarframework\Request;
+use wizarphics\wizarframework\Response;
+use app\models\ContactModel;
 
 class AppController extends Controller
 {
@@ -30,12 +32,27 @@ class AppController extends Controller
 
     public function contact()
     {
-        return $this->render('contact');
+        $params = [
+            'model' => new ContactModel()
+        ];
+        return $this->render('contact', $params);
     }
 
-    public function handleForm(Request $request)
+    public function handleForm(Request $request, Response $response)
     {
-       $body= $request->getBody();
-        return "Handling Submitted Data";
+        $contactModel = new ContactModel();
+        if ($request->isPost()) {
+            $contactModel->loadData($request->getBody());
+
+            if ($contactModel->validate() && $contactModel->send()) {
+                Application::$app->session->setFlash('success', 'Thanks for contacting us.');
+                $response->redirect('/contact');
+            }
+        }
+        
+        
+        return $this->render('contact',  [
+            'model' => $contactModel
+        ]);
     }
 }

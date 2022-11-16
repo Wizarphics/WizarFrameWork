@@ -12,7 +12,7 @@
  */
 
 
-use app\core\Application;
+use wizarphics\wizarframework\Application;
 
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -21,6 +21,7 @@ $dotenv->load();
 
 
 $config = [
+    'userClass'=> \app\models\User::class,
     'db'=>[
         'dsn'=>$_ENV['DB_DSN'],
         'user'=>$_ENV['DB_USER'],

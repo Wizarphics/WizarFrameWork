@@ -12,9 +12,7 @@
  */
 
 namespace app\models;
-
-use app\core\DbModel;
-use app\core\UserModel;
+use wizarphics\wizarframework\UserModel;
 
 class User extends UserModel
 {

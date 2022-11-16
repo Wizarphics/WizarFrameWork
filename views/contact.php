@@ -11,25 +11,24 @@
  *
  */
 
+use wizarphics\wizarframework\form\TextAreaField;
+use wizarphics\wizarframework\View;
+
+/**
+ * @var View $this
+ */
+$this->title = 'Contact';
 
 ?>
 <div class="container py-5">
     <h1>Contact Form</h1>
-    <form class="row g-3" action="" method="post">
-        <div class="col-md-12">
-            <label class="form-label">Subject</label>
-            <input type="text" name="subject" class="form-control">
-        </div>
-        <div class="col-md-12">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control">
-        </div>
-        <div class="col-md-12">
-            <label class="form-label">Body</label>
-            <textarea name="body" class="form-control" cols="30" rows="10"></textarea>
-        </div>
+    <?php $form = wizarphics\wizarframework\form\Form::begin('', 'post') ?>
+        <?= $form->field($model, 'name') ?>
+        <?= $form->field($model, 'subject') ?>
+        <?= $form->field($model, 'email')->emailField() ?>
+        <?= new TextAreaField($model, 'body') ?>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Contact Us</button>
         </div>
-    </form>
+    <?= $form::end() ?>
 </div>

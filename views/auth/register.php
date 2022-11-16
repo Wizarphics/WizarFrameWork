@@ -12,10 +12,18 @@ use app\models\User;
  *
  */
 /** @var $model User  */
+
+use wizarphics\wizarframework\View;
+
+/**
+ * @var View $this
+ */
+$this->title = 'Register';
+
 ?>
 <div class="container py-5">
     <h1>Register</h1>
-    <?php $form = app\core\form\Form::begin('', 'post') ?>
+    <?php $form = wizarphics\wizarframework\form\Form::begin('', 'post') ?>
     <div class="row">
         <div class="col-6">
             <?= $form->field($model, 'firstname') ?>
@@ -30,7 +38,7 @@ use app\models\User;
     <div class="col-12 mt-3">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <?= \app\core\form\Form::end() ?>
+    <?= \wizarphics\wizarframework\form\Form::end() ?>
 </div>
 
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1fc097a950abd7de8a97a2f08a374eb",
+    "content-hash": "a3749de8b3667514151d7723d5bb5538",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -466,6 +466,39 @@
                 }
             ],
             "time": "2021-12-12T23:22:04+00:00"
+        },
+        {
+            "name": "wizarphics/wizarframework-core",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Wizarphics/wizarframework-core.git",
+                "reference": "f018b43f9492192bdc12d9bcfa8ae226d8066812"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Wizarphics/wizarframework-core/zipball/f018b43f9492192bdc12d9bcfa8ae226d8066812",
+                "reference": "f018b43f9492192bdc12d9bcfa8ae226d8066812",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "wizarphics\\wizarframework\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Wizarphics",
+                    "email": "wizarphics@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/Wizarphics/wizarframework-core/issues",
+                "source": "https://github.com/Wizarphics/wizarframework-core/tree/v1.0.2"
+            },
+            "time": "2022-11-16T17:43:16+00:00"
         }
     ],
     "packages-dev": [],
@@ -476,5 +509,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

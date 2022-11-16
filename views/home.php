@@ -11,7 +11,14 @@
  *
  */
 
-/** @var $name app\controllers\ $params */
+/** @var $name wizarphics\wizarframework\Controller::$params */
+
+use wizarphics\wizarframework\View;
+
+/**
+ * @var View $this
+ */
+$this->title = 'Home';
 
 ?>
 <main class="flex-shrink-0">
