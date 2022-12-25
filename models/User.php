@@ -12,14 +12,16 @@
  */
 
 namespace app\models;
+
+use wizarphics\wizarframework\interfaces\ValidationInterface;
 use wizarphics\wizarframework\UserModel;
 
 class User extends UserModel
 {
 
-    const STATUS_INACTIVE =0;
-    const STATUS_ACTIVE =1;
-    const STATUS_DELETED =2;
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_DELETED = 2;
 
     public string $firstname = '';
     public string $lastname = '';
@@ -28,23 +30,52 @@ class User extends UserModel
     public string $password = '';
     public string $passwordConfirm = '';
 
+    public string $remberMe = '';
+    public string $consent = '';
+    public string $range = '';
+    public string $switch = '';
+    public string $search = '';
+    public $pin = '';
+    public $image = null;
+
+    public $color = '';
+
+    public $dateTime = '';
+
+    public $date = '';
+    public $time = '';
+    public $number = '';
+
+    public $message = '';
+
+    public $tel = '';
+
+    public $select = [];
+
+    /**
+     * Class constructor.
+     */
+    public function __construct(?ValidationInterface $validator = null)
+    {
+        parent::__construct($validator);
+    }
+
     public function save()
     {
-        $this->status=self::STATUS_INACTIVE;
-        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+        $this->status = self::STATUS_INACTIVE;
+        $this->password = $this->passwordHandler->hashPassword($this->password);
         return parent::save();
     }
 
     public function rules(): array
     {
         return [
-            'firstname' => [self::RULE_REQUIRED],
+            'firstname' => [self::RULE_REQUIRED, $this->validator::RULE_ALPHA],
             'lastname' => [self::RULE_REQUIRED],
-            'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, [
-                self::RULE_UNIQUE, 'class'=>self::class
-            ]],
-            'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8], [self::RULE_MAX, 'max' => 24]],
-            'passwordConfirm' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
+            'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, self::RULE_UNIQUE . ':'.$this->tableName().'.email'],
+            'password' => [self::RULE_REQUIRED, self::RULE_MIN.':8', self::RULE_MAX.':24'],
+            'passwordConfirm' => [self::RULE_REQUIRED, self::RULE_MATCH.':password'],
+            // 'consent' => [self::RULE_REQUIRED],
         ];
     }
 
@@ -65,23 +96,34 @@ class User extends UserModel
             'lastname',
             'email',
             'password',
-            'status'
+            'status',
         ];
     }
 
     public function labels(): array
     {
         return [
-            'firstname'=>'First Name',
-            'lastname'=>'Last Name',
-            'email'=>'Email Address',
-            'password'=>'Password',
-            'passwordConfirm'=>'Confirm Password',
+            'firstname' => 'First Name',
+            'lastname' => 'Last Name',
+            'email' => 'Email Address',
+            'password' => 'Password',
+            'passwordConfirm' => 'Confirm Password',
+            'consent' => 'I\'ve read and agree to the <a href="https://" class="text-danger">Terms</a> and <a href="https://" class="text-danger">Conditions</a>',
+            'select' => 'Select One',
+            'remberMe' => 'Stay signed in.'
         ];
     }
 
     public function getDisplayName(): string
     {
-        return $this->firstname.' '.$this->lastname;
+        return $this->firstname . ' ' . $this->lastname;
+    }
+    /**
+     * @return UserModel
+     */
+    public function setLoginFields(): UserModel
+    {
+        $this->loginFields = ['email', 'password'];
+        return $this;
     }
 }
