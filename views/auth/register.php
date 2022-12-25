@@ -1,5 +1,5 @@
 <?php
-use app\models\User;
+
 /*
  * Copyright (c) 2022.
  * User: Fesdam
@@ -11,34 +11,32 @@ use app\models\User;
  * @author Wizarphics <Wizarphics@gmail.com>
  *
  */
-/** @var $model User  */
 
-use wizarphics\wizarframework\View;
+/** @var \app\models\User $model */
+
 
 /**
- * @var View $this
+ * @var \wizarphics\wizarframework\View $this
  */
 $this->title = 'Register';
-
+section('pageHeading');
+print '<h4>Choose your account details</h4>';
+endSection();
 ?>
-<div class="container py-5">
-    <h1>Register</h1>
-    <?php $form = wizarphics\wizarframework\form\Form::begin('', 'post') ?>
-    <div class="row">
-        <div class="col-6">
-            <?= $form->field($model, 'firstname') ?>
-        </div>
-        <div class="col-6">
-            <?= $form->field($model, 'lastname') ?>
-        </div>
+<?php section('form') ?>
+<?php form_begin_multipart('', 'post') ?>
+<div class="row">
+    <div class="col-md-6">
+        <?= textField($model, 'firstname') ?>
     </div>
-    <?= $form->field($model, 'email')->emailField() ?>
-    <?= $form->field($model, 'password')->passwordField() ?>
-    <?= $form->field($model, 'passwordConfirm')->passwordField() ?>
-    <div class="col-12 mt-3">
-        <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="col-md-6">
+        <?= textField($model, 'lastname') ?>
     </div>
-    <?= \wizarphics\wizarframework\form\Form::end() ?>
 </div>
-
-
+<?= emailField($model, 'email') ?>
+<?= passwordField($model, 'password') ?>
+<?= passwordField($model, 'passwordConfirm') ?>
+<?= submit_button($model, 'Send', ['class' => 'w-100 btn-danger']) ?>
+<p class="text-center mt-5">Already got an account? <a href="<?= route_to('login') ?>" class="text-danger">Sign In</a></p>
+<?= form_close() ?>
+<?php endSection() ?>
