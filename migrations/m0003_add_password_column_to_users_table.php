@@ -10,6 +10,7 @@
  * @author Wizarphics <Wizarphics@gmail.com>
  *
  */
+// namespace app\migrations;
 class m0003_add_password_column_to_users_table {
     public function up()
     {

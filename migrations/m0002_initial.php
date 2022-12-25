@@ -11,6 +11,8 @@
  *
  */
 
+// namespace app\migrations;
+
 class m0002_initial
 {
     public function up()
