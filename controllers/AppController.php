@@ -15,19 +15,20 @@ namespace app\controllers;
 
 use wizarphics\wizarframework\Application;
 use wizarphics\wizarframework\Controller;
-use wizarphics\wizarframework\Request;
-use wizarphics\wizarframework\Response;
+use wizarphics\wizarframework\http\Request;
+use wizarphics\wizarframework\http\Response;
 use app\models\ContactModel;
 
 class AppController extends Controller
 {
 
-    public function home(): array|bool|string
+    public function home()
     {
         $params = [
             'name' => 'Wizarphics'
         ];
-        return $this->render('home', $params);
+        // return route_to('register');
+        return $this->render('index', $params);
     }
 
     public function contact()
