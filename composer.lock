@@ -539,16 +539,16 @@
         },
         {
             "name": "wizarphics/wizarframework-core",
-            "version": "v1.0.5.02",
+            "version": "v1.0.5.03",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wizarphics/wizarframework-core.git",
-                "reference": "89c7ae5f9a5ee5732b820a6bcab2992c96063a01"
+                "reference": "641a783a4eda97669705eabfd879037b4f553e55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wizarphics/wizarframework-core/zipball/89c7ae5f9a5ee5732b820a6bcab2992c96063a01",
-                "reference": "89c7ae5f9a5ee5732b820a6bcab2992c96063a01",
+                "url": "https://api.github.com/repos/Wizarphics/wizarframework-core/zipball/641a783a4eda97669705eabfd879037b4f553e55",
+                "reference": "641a783a4eda97669705eabfd879037b4f553e55",
                 "shasum": ""
             },
             "require": {
@@ -569,9 +569,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Wizarphics/wizarframework-core/issues",
-                "source": "https://github.com/Wizarphics/wizarframework-core/tree/v1.0.5.02"
+                "source": "https://github.com/Wizarphics/wizarframework-core/tree/v1.0.5.03"
             },
-            "time": "2022-12-09T00:32:16+00:00"
+            "time": "2022-12-09T00:39:31+00:00"
         }
     ],
     "packages-dev": [],
