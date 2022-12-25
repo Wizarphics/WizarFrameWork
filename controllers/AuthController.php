@@ -106,8 +106,7 @@ class AuthController extends Controller
                 $user = $userModel->findOne([
                     'email' => $userModel->email
                 ]);
-                $link = $pwdResetModel->generateResetLink($userModel->email);
-                if ($pwdResetModel->sendResetLink($user, $link)) {
+                if ($pwdResetModel->sendResetLink($user)) {
                     session()->setFlash('success', 'Please check your email to reset your password');
                     return $this->render('auth/success', ['type' => 'reset-link']);
                 } else {
