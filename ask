@@ -1,0 +1,5 @@
+<?php
+if (defined('PHP_OS') or PHP_OS === 'WINNT')
+    return shell_exec('php -S localhost:5000 -t public');
+else
+    return shell_exec('docker-composer up -d');
