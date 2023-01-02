@@ -27,7 +27,4 @@ $this->title = 'Contact Form';
     <?= TextAreaField($model, 'body') ?>
     <?= submit_button($model, 'Contact Us') ?>
     <?= form_close() ?>
-    <?php @section('title') ?>
-    <?php @endSection() ?>
-    <?php @yieldSection('title') ?>
 </div>
