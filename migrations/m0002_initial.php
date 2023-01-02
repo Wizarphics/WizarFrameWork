@@ -27,13 +27,13 @@ class m0002_initial
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )ENGINE=INNODB";
-        $db->pdo->exec($SQL);
+        $db->_pdo->exec($SQL);
     }
 
     public function down()
     {
         $db = \wizarphics\wizarframework\Application::$app->db;
         $SQL = "DROP TABLE IF EXISTS users;";
-        $db->pdo->exec($SQL);
+        $db->_pdo->exec($SQL);
     }
 }
