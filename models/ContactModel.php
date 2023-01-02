@@ -14,11 +14,6 @@ class ContactModel extends Model{
 
     public string $body='';
 
-    /**
-     */
-    public function __construct() {
-        parent::__construct();
-    }
 	/**
 	 * @return array
 	 */
