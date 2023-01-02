@@ -34,9 +34,19 @@ endSection();
     </div>
 </div>
 <?= emailField($model, 'email') ?>
-<?= passwordField($model, 'password') ?>
-<?= passwordField($model, 'passwordConfirm') ?>
+<?= passwordField($model, 'password', [
+    'superClass' => 'position-relative'
+])->append('
+<button type="button" class="pwdhideshow">
+</button>
+') ?>
+<?= passwordField($model, 'passwordConfirm', [
+    'superClass' => 'position-relative'
+])->append('
+<button type="button" class="pwdhideshow">
+</button>
+') ?>
 <?= submit_button($model, 'Send', ['class' => 'w-100 btn-danger']) ?>
-<p class="text-center mt-5">Already got an account? <a href="<?= route_to('login') ?>" class="text-danger">Sign In</a></p>
+<p class="text-center mt-5">Already got an account? <a href="<?= ('/auth/login') ?>" class="text-danger">Sign In</a></p>
 <?= form_close() ?>
 <?php endSection() ?>

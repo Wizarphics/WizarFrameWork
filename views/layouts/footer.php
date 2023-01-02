@@ -56,22 +56,22 @@
             <h5 class="fs-6">Courses</h5>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a href="<?= site_url('course/digital-marketing') ?>" class="nav-link p-0 small fs-6 fw-light text-muted">Digital Marketing</a>
+                    <a href="/course/digital-marketing" class="nav-link p-0 small fs-6 fw-light text-muted">Digital Marketing</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= site_url('course/web-development') ?>" class="nav-link p-0 small fs-6 fw-light text-muted">Web Development</a>
+                    <a href="/course/web-development" class="nav-link p-0 small fs-6 fw-light text-muted">Web Development</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= site_url('course/product-design') ?>" class="nav-link p-0 small fs-6 fw-light text-muted">Product (UI/UX) Design</a>
+                    <a href="/course/product-design" class="nav-link p-0 small fs-6 fw-light text-muted">Product (UI/UX) Design</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= site_url('course/graphics-design') ?>" class="nav-link p-0 small fs-6 fw-light text-muted">Graphics Design</a>
+                    <a href="/course/graphics-design" class="nav-link p-0 small fs-6 fw-light text-muted">Graphics Design</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= site_url('course/data-analysis') ?>" class="nav-link p-0 small fs-6 fw-light text-muted">Data Analysis</a>
+                    <a href="/course/data-analysis" class="nav-link p-0 small fs-6 fw-light text-muted">Data Analysis</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= site_url('course/general-computing') ?>" class="nav-link p-0 small fs-6 fw-light text-muted">General Computing</a>
+                    <a href="/course/general-computing" class="nav-link p-0 small fs-6 fw-light text-muted">General Computing</a>
                 </li>
             </ul>
         </div>
@@ -80,13 +80,13 @@
             <h5 class="fs-6">Programmes</h5>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                    <a href="<?= site_url('winatechskill') ?>" class="nav-link p-0 text-muted">#WinATechSkill</a>
+                    <a href="/winatechskill" class="nav-link p-0 text-muted">#WinATechSkill</a>
                 </li>
                 <!-- <li class="nav-item mb-2">
 					<a href="" class="nav-link p-0 text-muted">Edubank</a>
 				</li> -->
                 <li class="nav-item mb-2">
-                    <a href="<?= site_url('affiliate-program') ?>" class="nav-link p-0 text-muted">Affilliate Program</a>
+                    <a href="/affiliate-program" class="nav-link p-0 text-muted">Affilliate Program</a>
                 </li>
             </ul>
         </div>
@@ -95,10 +95,10 @@
             <h5 class="fs-6">More</h5>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                    <a href="<?= site_url('our-plans') ?>" class="nav-link p-0 text-muted">Our Plans</a>
+                    <a href="/our-plans" class="nav-link p-0 text-muted">Our Plans</a>
                 </li>
                 <li class="nav-item mb-2 order-last">
-                    <a href="<?= site_url('contact-us') ?>" class="nav-link p-0 text-muted">Contact</a>
+                    <a href="/contact-us" class="nav-link p-0 text-muted">Contact</a>
                 </li>
                 <li class="nav-item mb-2">
                     <a href="<?= 'ig_store' ?>" class="nav-link p-0 text-muted">Store</a>
@@ -107,7 +107,7 @@
                     <a href="<?= 'e_consultation' ?>" class="nav-link p-0 text-muted">Consultation</a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="<?= site_url('faqs') ?>" class="nav-link p-0 text-muted">FAQs</a>
+                    <a href="/faqs" class="nav-link p-0 text-muted">FAQs</a>
                 </li>
             </ul>
         </div>

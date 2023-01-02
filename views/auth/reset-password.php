@@ -21,16 +21,16 @@ use wizarphics\wizarframework\Application;
 $this->title = 'Reset your password';
 section('pageHeading');
 print "<h4>$this->title</h4>";
-endSection();?>
+endSection(); ?>
 <?php
 section('form');
-?>
-<?php form_begin(route_to('reset-password'), 'post') ?>
-<?= passwordField($model, 'password')?>
-<?= passwordField($model, 'passwordConfirm')?>
+form_begin(route_to('/reset-password'), 'post') ?>
+<?= passwordField($model, 'password', ['superClass' => 'position-relative'])->append('<button type="button" class="pwdhideshow"></button>') ?>
+<?= passwordField($model, 'passwordConfirm', ['superClass' => 'position-relative'])->append('<button type="button" class="pwdhideshow"></button>') ?>
 <?= hiddenField('selector', Application::$app->request->getVar('selector')) ?>
 <?= hiddenField('validator', Application::$app->request->getVar('validator')) ?>
 <?= submit_button($model, 'Send', ['class' => 'w-100 btn-danger']) ?>
-<?= form_close() ?>
+<?=
+form_close() ?>
 <?php
 endSection();

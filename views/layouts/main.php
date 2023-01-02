@@ -85,6 +85,7 @@
         <?php endif; ?>
         {{content}}
     </div>
+    
     <?= $this->include('layouts/footer');?>
     <script src="/js/app.min.js"></script>
     <script>

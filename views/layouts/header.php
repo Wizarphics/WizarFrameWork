@@ -44,7 +44,7 @@
                             <a class="nav-link" href="/blog">Community</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= route_to('documentation') ?>">Documentation</a>
+                            <a class="nav-link" href="/documentation">Documentation</a>
                         </li>
                     </ul>
                     <?php if (auth()->isGuest()) : ?>
@@ -52,8 +52,8 @@
                             <button class="btn btn-link border-0 d-none d-md-block">
                                 <i class="bi bi-moon"></i>
                             </button>
-                            <a class="btn btn-danger" href="<?= route_to('/register') ?>">Register</a>
-                            <a class="btn btn-outline-danger" href="<?= route_to('login') ?>">Login</a>
+                            <a class="btn btn-danger" href="/auth/register">Register</a>
+                            <a class="btn btn-outline-danger" href="/auth/login">Login</a>
                         </ul>
                     <?php else : ?>
                         <ul class="navbar-nav mb-2 mb-md-0 gap-3">
@@ -61,10 +61,10 @@
                                 <i class="bi bi-moon"></i>
                             </button>
                             <li class="nav-item">
-                                <a class="text-danger nav-link" href="/profile"><?= auth()->getUser()->firstname ?></a>
+                                <a class="text-danger nav-link" href="/profile"><?= auth()->user()->firstname ?></a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn-danger btn" href="<?= route_to('logout') ?>">Logout</a>
+                                <a class="btn-danger btn" href="/auth/logout">Logout</a>
                             </li>
                         </ul>
                     <?php endif; ?>

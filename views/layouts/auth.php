@@ -26,6 +26,7 @@ use wizarphics\wizarframework\View;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Auth :: <?= $this->title ?></title>
     <?php yieldSection('css'); ?>
+    <link rel="stylesheet" href="/css/icons.min.css">
     <link href="/css/style.min.css" rel="stylesheet">
     <style>
         body {
@@ -50,6 +51,36 @@ use wizarphics\wizarframework\View;
             border-color: rgb(255, 36, 0);
             outline: 0;
             box-shadow: 0 0 0 .25rem rgba(255, 36, 0, .25);
+        }
+    </style>
+    <style>
+        .pwdhideshow {
+            position: absolute;
+            top: 2.35rem;
+            right: 0;
+            cursor: pointer;
+            border: 0;
+            outline: none;
+            background-color: transparent;
+            color: #555;
+        }
+
+        .pwdhideshow::before {
+            display: inline-block;
+            font: normal normal normal 24px/1 "Material Design Icons";
+            font-size: inherit;
+            text-rendering: auto;
+            line-height: inherit;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .pwdhideshow.hide:not(.is-invalid)::before {
+            content: "\F0208";
+        }
+
+        .pwdhideshow.show:not(.is-invalid)::before {
+            content: "\F0209";
         }
     </style>
     <script defer>
@@ -133,6 +164,7 @@ use wizarphics\wizarframework\View;
         </div>
     <?php endif; ?>
     <script src="/js/app.min.js"></script>
+    <?php yieldSection('script') ?>
     <script>
         const option = {
             autohide: true,
@@ -145,6 +177,43 @@ use wizarphics\wizarframework\View;
                 Toast.show()
             }
         )
+    </script>
+
+    <script defer>
+        const pwdhideshows = document.querySelectorAll('.pwdhideshow');
+        pwdhideshows.forEach(pwdhideshow => {
+            const pwdinput = pwdhideshow.previousElementSibling;
+
+            if (pwdhideshow !== undefined) {
+                len = pwdinput.value.length
+                if (len > 1 && pwdhideshow.classList == 'pwdhideshow' && !pwdinput.classList.contains('is-invalid')) {
+                    pwdhideshow.classList.add('hide')
+                }
+
+                pwdinput.addEventListener('keyup', e => {
+                    len = pwdinput.value.length
+                    pwdinput.classList.remove('is-invalid')
+                    len == 1 ?
+                        pwdhideshow.classList.add('hide') : (len == 0) ? pwdhideshow.classList = 'pwdhideshow' : null
+                    if (len > 1 && pwdhideshow.classList == 'pwdhideshow' && !pwdinput.classList.contains('is-invalid')) {
+                        pwdhideshow.classList.add('hide')
+                    }
+                })
+
+                pwdhideshow.onclick = e => {
+                    if (pwdhideshow.classList.contains('show')) {
+                        pwdinput.type = 'password'
+                        pwdhideshow.classList.remove('show')
+                        pwdhideshow.classList.add('hide')
+                    } else {
+                        pwdinput.type = 'text'
+                        pwdhideshow.classList.remove('hide')
+                        pwdhideshow.classList.add('show')
+                    }
+
+                }
+            }
+        })
     </script>
 </body>
 

@@ -16,37 +16,39 @@ $title = esc($exception->getMessage());
 
 	<title><?= esc($title) ?></title>
 	<style type="text/css">
-		<?= preg_replace('#[\r\n\t ]+#', ' ', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.css')) ?><?= preg_replace('#[\r\n\t ]+#', ' ', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'prism.css')) ?>
-		.ASKPHP__trademark {
-            position: absolute;
-            bottom: 25px;
-            right: 25px;
-            text-decoration: none;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            font-weight: normal;
-            gap: .3rem;
-            color: #efefef;
-        }
+		<?= preg_replace('#[\r\n\t ]+#', ' ', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.css')) ?><?= preg_replace('#[\r\n\t ]+#', ' ', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'prism.css')) ?>.ASKPHP__trademark {
+			position: absolute;
+			bottom: 25px;
+			right: 25px;
+			text-decoration: none;
+			font-size: 18px;
+			display: flex;
+			align-items: center;
+			font-weight: normal;
+			gap: .3rem;
+			color: #efefef;
+		}
 
-		details>summary {
+		details>summary>p {
 			list-style-type: none;
 			cursor: pointer;
 			font-weight: 700;
 		}
 
-		details>summary::before {
+		details>summary>p::before {
 			content: '=';
 		}
 
-		details>summary:hover {
+		details>summary>p:hover {
 			background-color: #f00;
 		}
-		.tabs{
+
+		.tabs {
 			margin-bottom: 1rem;
 		}
-		.tabs a:link, .tabs a:visited{
+
+		.tabs a:link,
+		.tabs a:visited {
 			border-radius: .125rem;
 		}
 	</style>
@@ -159,7 +161,9 @@ $title = esc($exception->getMessage());
 														<tr>
 															<td><code><?= esc(isset($params[$key]) ? '$' . $params[$key]->name : "#{$key}") ?></code></td>
 															<td>
-																<pre><?= esc(print_r($value, true)) ?></pre>
+																<pre class="language-php">
+																	<code><?= esc(print_r($value, true)) ?></code>
+																</pre>
 															</td>
 														</tr>
 													<?php endforeach ?>
@@ -278,7 +282,7 @@ $title = esc($exception->getMessage());
 
 			<!-- Request -->
 			<div class="content" id="request">
-				<?php $request = Application::$app->request; ?>
+				<?php $request = app()->request; ?>
 				<table>
 					<tbody>
 						<tr>
@@ -394,7 +398,7 @@ $title = esc($exception->getMessage());
 
 			<!-- Response -->
 			<?php
-			$response = Application::$app->response;
+			$response = app()->response;
 			$response->setStatusCode(http_response_code());
 			?>
 			<div class="content" id="response">

@@ -20,19 +20,24 @@
 $this->title = 'Login';
 section('pageHeading');
 print '<h4>Login</h4>';
-endSection();?>
+endSection(); ?>
 <?php
 section('form');
 ?>
 <?php form_begin(route_to('login'), 'post') ?>
 <?= emailField($model, 'email') ?>
-<?= passwordField($model, 'password') ?>
+<?= passwordField($model, 'password', [
+    'superClass' => 'position-relative'
+])->append('
+<button type="button" class="pwdhideshow" id="pwdhideshow">
+</button>
+') ?>
 <div class="row g-0 row-cols-2">
     <div class="col">
         <?= checkBoxField($model, 'remberMe') ?>
     </div>
     <div class="col">
-        <a href="<?= route_to('forgot-password') ?>" class="text-danger">Forgot Password</a>
+        <a href="<?= ('/auth/forgot-password') ?>" class="text-danger">Forgot Password</a>
     </div>
 </div>
 <?= submit_button($model, 'Send', ['class' => 'w-100 btn-danger']) ?>

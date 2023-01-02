@@ -21,7 +21,7 @@
     <title>404::<?= $exception->getMessage() ?></title>
     <style>
         :root {
-            --main-bg-color: #212529;
+            --main-bg-color: #282c34;
             --main-text-color: #efefef;
             --dark-text-color: #222;
             --light-text-color: #c7c7c7;

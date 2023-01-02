@@ -25,7 +25,7 @@ endSection();?>
 <?php
 section('form');
 ?>
-<?php form_begin(route_to('reset-password'), 'post') ?>
+<?php form_begin(route_to('forgot-password'), 'post') ?>
 <?= emailField($model, 'email') ?>
 <?= submit_button($model, 'Send', ['class' => 'w-100 btn-danger']) ?>
 <?= form_close() ?>
