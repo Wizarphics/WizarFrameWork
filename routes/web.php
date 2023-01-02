@@ -2,6 +2,9 @@
 
 use app\controllers\AppController;
 use app\controllers\AuthController;
+use wizarphics\wizarframework\http\Request;
+use wizarphics\wizarframework\http\Response;
+use wizarphics\wizarframework\View;
 
 /**
  * @var wizarphics\wizarframework\Router $router
@@ -10,13 +13,13 @@ use app\controllers\AuthController;
 $router->get('/', [AppController::class, "home"]);
 $router->get('/contact', [AppController::class, "contact"]);
 $router->post('/contact', [AppController::class, "handleForm"])->name('contact');
-$router->getPost('/auth/login', [AuthController::class, "login"])->name('login');
-$router->get('/auth/register', [AuthController::class, "register"])->name('register');
-$router->post('/auth/register', [AuthController::class, "register"]);
-$router->get('/auth/forgot-password', [AuthController::class, "forgotPassword"])->name('forgot-password');
-$router->getPost('/auth/logout', [AuthController::class, "logout"])->name('logout');
-$router->getPost('/auth/reset-password', [AuthController::class, "resetPassword"])->name('reset-password');
-$router->get('/auth/pin', [AuthController::class, "pin"])->name('pin');
 $router->get('/users/{id:(:num)}', [AuthController::class, 'users']);
 $router->get('/profile', [AuthController::class, 'profile']);
-// $router->put('/hhh', []);
+$router->get('/view/{dir}/{name}', function ($dir, $name, Request $request, Response $response) {
+    /**
+     * @var View $view
+     */
+    $view = app()->view;
+    $view->title = ucfirst(esc($name));
+    return $view->renderCustomView(VIEWPATH . $dir . '/' . $name);
+});
