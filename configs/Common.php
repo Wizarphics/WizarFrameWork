@@ -14,6 +14,8 @@
  * @see: https://github.com/Wizarphics/WizarFrameWork/
  */
 
+use wizarphics\wizarframework\Application;
+
 Sage::$theme = Sage::THEME_SOLARIZED_DARK;
 
 
@@ -48,4 +50,36 @@ if (!function_exists('clean_path')) {
                 return $path;
         }
     }
+}
+
+
+if(!function_exists('yieldSection')){
+    /**
+     * A convenience method to yield a section
+     */
+    function yieldSection(string $sectionName): void
+    {
+        Application::$app->view->yieldSection($sectionName);
+    }
+}
+
+if(!function_exists('section')){
+    /**
+     * A convenience method to start a view section
+     */
+    function section(string $sectionName): void
+    {
+        Application::$app->view->section($sectionName);
+    }
+}
+
+if (!function_exists('endSection')) {
+    /**
+     * A convenience method to end a view section
+     */
+    function endSection(): void
+    {
+        Application::$app->view->endSection();
+    }
+
 }
