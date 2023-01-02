@@ -34,8 +34,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
  * Require Bootstrap
  * ---------------------------------------------------------------
  */
-$app = require_once Application::$CORE_DIR . '/bootstrap.php';
+$app = require_once Application::$CORE_DIR . 'bootstrap.php';
 
+/** @var Application $app */
+
+// s($_COOKIE, $_SESSION);
 
 /*
  * ---------------------------------------------------------------
