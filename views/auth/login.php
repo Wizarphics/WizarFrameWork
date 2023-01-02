@@ -1,5 +1,4 @@
 <?php
-use app\models\ContactModel;
 /*
  * Copyright (c) 2022.
  * User: Fesdam
@@ -11,25 +10,38 @@ use app\models\ContactModel;
  * @author Wizarphics <Wizarphics@gmail.com>
  *
  */
-/** @var $model ContactModel */
 
-use wizarphics\wizarframework\View;
+/** @var \app\models\User $model*/
+
 
 /**
- * @var View $this
+ * @var \wizarphics\wizarframework\View $this
  */
 $this->title = 'Login';
-
+section('pageHeading');
+print '<h4>Login</h4>';
+endSection(); ?>
+<?php
+section('form');
 ?>
-<div class="container py-5">
-    <h1>Login</h1>
-    <?php $form = wizarphics\wizarframework\form\Form::begin('', 'post') ?>
-    <?= $form->field($model, 'email')->emailField() ?>
-    <?= $form->field($model, 'password')->passwordField() ?>
-    <div class="col-12 mt-3">
-        <button type="submit" class="btn btn-primary">Submit</button>
+<?php form_begin(route_to('login'), 'post') ?>
+<?= emailField($model, 'email') ?>
+<?= passwordField($model, 'password', [
+    'superClass' => 'position-relative'
+])->append('
+<button type="button" class="pwdhideshow" id="pwdhideshow">
+</button>
+') ?>
+<div class="row g-0 row-cols-2">
+    <div class="col">
+        <?= checkBoxField($model, 'remberMe') ?>
     </div>
-    <?= \wizarphics\wizarframework\form\Form::end() ?>
+    <div class="col">
+        <a href="<?= ('/auth/forgot-password') ?>" class="text-danger">Forgot Password</a>
+    </div>
 </div>
-
-
+<?= submit_button($model, 'Send', ['class' => 'w-100 btn-danger']) ?>
+<?= form_close() ?>
+<p class="text-center mt-5">Not a member? <a href="<?= route_to('register') ?>" class="text-danger">Join Us</a></p>
+<?php
+endSection();

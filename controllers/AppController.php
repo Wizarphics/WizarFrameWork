@@ -15,19 +15,18 @@ namespace app\controllers;
 
 use wizarphics\wizarframework\Application;
 use wizarphics\wizarframework\Controller;
-use wizarphics\wizarframework\Request;
-use wizarphics\wizarframework\Response;
 use app\models\ContactModel;
 
 class AppController extends Controller
 {
 
-    public function home(): array|bool|string
+    public function home()
     {
+        $this->setLayout('main');
         $params = [
             'name' => 'Wizarphics'
         ];
-        return $this->render('home', $params);
+        return $this->render('index', $params);
     }
 
     public function contact()
@@ -38,7 +37,7 @@ class AppController extends Controller
         return $this->render('contact', $params);
     }
 
-    public function handleForm(Request $request, Response $response)
+    public function handleForm($request, $response)
     {
         $contactModel = new ContactModel();
         if ($request->isPost()) {

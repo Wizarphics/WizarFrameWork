@@ -11,31 +11,38 @@
  *
  */
 
-
 use wizarphics\wizarframework\Application;
 
+define('ASKPHP_START', microtime(true));
 
+define('ROOT_DIR', dirname(__DIR__));
+
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| this application. We just need to utilize it! We'll simply require it
+| into the script here so we don't need to manually load our classes.
+|
+*/
 require_once __DIR__ . '/../vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
-$dotenv->safeLoad();
 
+/*
+ * ---------------------------------------------------------------
+ * Require Bootstrap
+ * ---------------------------------------------------------------
+ */
+$app = require_once Application::$CORE_DIR . 'bootstrap.php';
 
-$config = [
-    'userClass' => \app\models\User::class,
-    'db' => [
-        'dsn' => $_ENV['DB_DSN'],
-        'user' => $_ENV['DB_USER'],
-        'password' => $_ENV['DB_PASSWORD']
-    ]
-];
+/** @var Application $app */
 
-$app = new Application(dirname(__DIR__), $config);
+// s($_COOKIE, $_SESSION);
 
-
-$router = $app->router;
-
-ob_start();
-require_once '../routes/web.php';
-ob_clean();
-
+/*
+ * ---------------------------------------------------------------
+ * Run The Application
+ * ---------------------------------------------------------------
+ */
 $app->run();

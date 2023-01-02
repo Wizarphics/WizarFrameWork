@@ -13,6 +13,6 @@
     },
     "require": {
         "vlucas/phpdotenv": "^5.4",
-        "wizarphics/wizarframework-core": "v1.0.2"
+        "wizarphics/wizarframework-core": "^1.0"
     }
 }
