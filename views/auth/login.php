@@ -29,8 +29,7 @@ section('form');
 <?= passwordField($model, 'password', [
     'superClass' => 'position-relative'
 ])->append('
-<button type="button" class="pwdhideshow" id="pwdhideshow">
-</button>
+<button type="button" class="pwdhideshow" tabindex="-1" id="pwdhideshow"></button>
 ') ?>
 <div class="row g-0 row-cols-2">
     <div class="col">

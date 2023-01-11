@@ -37,14 +37,12 @@ endSection();
 <?= passwordField($model, 'password', [
     'superClass' => 'position-relative'
 ])->append('
-<button type="button" class="pwdhideshow">
-</button>
+<button type="button" class="pwdhideshow" tabindex="-1"></button>
 ') ?>
 <?= passwordField($model, 'passwordConfirm', [
     'superClass' => 'position-relative'
 ])->append('
-<button type="button" class="pwdhideshow">
-</button>
+<button type="button" class="pwdhideshow" tabindex="-1"></button>
 ') ?>
 <?= submit_button($model, 'Send', ['class' => 'w-100 btn-danger']) ?>
 <p class="text-center mt-5">Already got an account? <a href="<?= ('/auth/login') ?>" class="text-danger">Sign In</a></p>
