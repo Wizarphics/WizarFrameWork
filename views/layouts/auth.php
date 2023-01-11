@@ -52,8 +52,6 @@ use wizarphics\wizarframework\View;
             outline: 0;
             box-shadow: 0 0 0 .25rem rgba(255, 36, 0, .25);
         }
-    </style>
-    <style>
         .pwdhideshow {
             position: absolute;
             top: 2.35rem;

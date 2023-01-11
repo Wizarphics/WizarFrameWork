@@ -13,7 +13,6 @@
 
 namespace app\models;
 
-use wizarphics\wizarframework\interfaces\ValidationInterface;
 use wizarphics\wizarframework\UserModel;
 
 class User extends UserModel
