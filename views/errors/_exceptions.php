@@ -1,9 +1,10 @@
 <?php
 
 use wizarphics\wizarframework\Application;
-
+/**
+ * @var wizarphics\wizarframework\Exception $this
+ */
 $error_id = uniqid('error', true);
-$title = esc($exception->getMessage());
 
 
 ?>
